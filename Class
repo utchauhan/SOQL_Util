@@ -1,6 +1,0 @@
-public class 3rdutil {
-    public static String 3rdAppQuerry(){
-        String query = SOQLUtil.buildSOQLQuery('object__c',otherParameter);
-        return query;
-    }
-}
