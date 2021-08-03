@@ -5,12 +5,12 @@ global without sharing class SOQLUtil {
     private static final String Query_limit = ' LIMIT ';
     private static final String Security_enforced = ' WITH SECURITY ENFORCED ';
 
-    global static String buildSOQLQUERY(String objName,String filter){
+    global static String buildSOQLQUERY(String objName,String filter_name,String filter){
         Schema.sObjectType sobj = Schema.getGlobalDescribe().get(objName);
         DescribeSObjectResult objectdescribe = sobj.getDescribe();
         Map<String, Schema.SObjectField> fieldMap = objectdescribe.fields.getMap();
 
-        String whereClause = 'Masterlabel = '+'\''+filter+'\'';
+        String whereClause = filter_name+' = '+'\''+filter+'\'';
         String query = buildqueryallstring(fieldMap.values(),objectdescribe,whereClause,1);
 
         return query;
